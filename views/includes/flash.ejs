@@ -1,0 +1,49 @@
+<% if(success && success.length) { %>
+<div
+  class="alert alert-success alert-dismissible fade show col-5 offset-3"
+  role="alert"
+  id="success-alert"
+>
+  <%= success %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+
+<script>
+  setTimeout(() => {
+    const alertEl = document.getElementById("success-alert");
+    if (alertEl) {
+      const alertInstance = bootstrap.Alert.getOrCreateInstance(alertEl);
+      alertInstance.close();
+    }
+  }, 2500);
+</script>
+<% } %> <% if(error && error.length) { %>
+<div
+  class="alert alert-danger alert-dismissible fade show col-6 offset-3"
+  role="alert"
+  id="danger-alert"
+>
+  <%= error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+
+<script>
+  setTimeout(() => {
+    const alertE2 = document.getElementById("danger-alert");
+    if (alertE2) {
+      const alertInstance = bootstrap.Alert.getOrCreateInstance(alertE2);
+      alertInstance.close();
+    }
+  }, 2500);
+</script>
+<% } %>

@@ -1,0 +1,245 @@
+<% layout("/layouts/boilerplate") %>
+
+<script>
+  const mapToken = "<%= process.env.MAP_TOKEN %>";
+  const listing = <%- JSON.stringify(listing) %>;
+</script>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3><%= listing.title %></h3>
+  </div>
+
+  <div class="card col-6 offset-2 show-card listing-card">
+    <img
+      src="<%= listing.image.url %>"
+      class="card-img-top show-img"
+      alt="listing_image"
+    />
+    <div class="card-body">
+      <p class="card-text">
+        <h6>Hosted by
+        <%= listing.owner.username %></h6>
+      </p>
+      <p class="card-text"><%= listing.description %></p>
+      <p class="card-text">
+        &#8377; <%= listing.price.toLocaleString("en-IN") %>
+      </p>
+      <p class="card-text"><%= listing.location %></p>
+      <p class="card-text"><%= listing.country %></p>
+    </div>
+  </div>
+  <br />
+  <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+  <div class="btns col-8">
+    <a
+      href="/listings/<%= listing._id %>/edit"
+      class="btn btn-dark col-1 offset-3 edit-btn"
+      >Edit</a
+    >
+
+    <form method="POST" action="/listings/<%= listing.id %>?_method=DELETE">
+      <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+  </div>
+  <% } %>
+
+  <div class="col-8 offset-2 mb-3">
+    <hr />
+    <div class="amenities-section">
+      <h4>What this place offers</h4>
+      <div class="amenities-grid">
+        <div class="amenity"><i class="fa-solid fa-utensils"></i>Kitchen</div>
+        <div class="amenity">
+          <i class="fa-solid fa-laptop"></i>Dedicated workspace
+        </div>
+        <div class="amenity"><i class="fa-solid fa-paw"></i>Pets allowed</div>
+        <div class="amenity"><i class="fa-solid fa-bath"></i>Bath</div>
+        <div class="amenity"><i class="fa-solid fa-wifi"></i>Wifi</div>
+        <div class="amenity">
+          <i class="fa-solid fa-car"></i>Free parking on premises
+        </div>
+        <div class="amenity"><i class="fa-solid fa-tv"></i>TV</div>
+        <div class="amenity">
+          <i class="fa-solid fa-camera"></i>Security cameras
+        </div>
+        <div class="amenity">
+          <i class="fa-solid fa-ethernet"></i>Ethernet connection
+        </div>
+        <div class="amenity"><i class="fa-solid fa-bed"></i>Bedroom</div>
+        <div class="amenity">
+          <i class="fa-solid fa-chair"></i>Outdoor furniture
+        </div>
+        <div class="amenity"><i class="fa-solid fa-mug-hot"></i>Coffee</div>
+      </div>
+    </div>
+    <% if(currUser) { %>
+    <hr />
+    <h4 style="font-weight: 600">Leave a Review</h4>
+    <form
+      method="POST"
+      action="/listings/<%= listing._id %>/reviews"
+      novalidate
+      class="needs-validation"
+    >
+      <div class="mb-3 mt-3">
+        <label for="rating" class="form-label">Rating</label>
+        <fieldset class="starability-slot">
+          <input
+            type="radio"
+            id="no-rate"
+            class="input-no-rate"
+            name="review[rating]"
+            value="1"
+            checked
+            aria-label="No rating."
+          />
+          <input
+            type="radio"
+            id="first-rate1"
+            name="review[rating]"
+            value="1"
+          />
+          <label for="first-rate1" title="Terrible">1 star</label>
+          <input
+            type="radio"
+            id="first-rate2"
+            name="review[rating]"
+            value="2"
+          />
+          <label for="first-rate2" title="Not good">2 stars</label>
+          <input
+            type="radio"
+            id="first-rate3"
+            name="review[rating]"
+            value="3"
+          />
+          <label for="first-rate3" title="Average">3 stars</label>
+          <input
+            type="radio"
+            id="first-rate4"
+            name="review[rating]"
+            value="4"
+          />
+          <label for="first-rate4" title="Very good">4 stars</label>
+          <input
+            type="radio"
+            id="first-rate5"
+            name="review[rating]"
+            value="5"
+          />
+          <label for="first-rate5" title="Amazing">5 stars</label>
+        </fieldset>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="comment" class="form-label">Comments</label>
+        <br />
+        <textarea
+          id="comment"
+          rows="5"
+          cols="30"
+          class="form-control"
+          name="review[comment]"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please add some comments for review</div>
+      </div>
+      <button class="btn btn-outline-dark">Submit</button>
+
+      <div class="review-summary">
+        <h4><i class="fa-solid fa-star"></i> 4.3 · 358 reviews</h4>
+
+        <div class="review-details">
+          <div class="review-bar">
+            <p>Overall rating</p>
+            <div class="rating-bars">
+              <div>
+                <span>5</span>
+                <div class="bar"></div>
+              </div>
+              <div>
+                <span>4</span>
+                <div class="bar filled"></div>
+              </div>
+              <div>
+                <span>3</span>
+                <div class="bar"></div>
+              </div>
+              <div>
+                <span>2</span>
+                <div class="bar"></div>
+              </div>
+              <div>
+                <span>1</span>
+                <div class="bar"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="review-metrics">
+            <div>
+              <p>Cleanliness</p>
+              <span>5.0</span><i class="fa-solid fa-spray-can-sparkles"></i>
+            </div>
+            <div>
+              <p>Accuracy</p>
+              <span>5.0</span><i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div>
+              <p>Check-in</p>
+              <span>5.0</span><i class="fa-solid fa-key"></i>
+            </div>
+            <div>
+              <p>Communication</p>
+              <span>5.0</span><i class="fa-regular fa-comment-dots"></i>
+            </div>
+            <div>
+              <p>Location</p>
+              <span>4.8</span><i class="fa-solid fa-map"></i>
+            </div>
+            <div>
+              <p>Value</p>
+              <span>5.0</span><i class="fa-solid fa-tag"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <hr />
+    <% } %> <% if(listing.reviews.length > 0) { %>
+    <div class="row mt-5">
+      <hr>
+      <h5>All Reviews</h5>
+      <% for(review of listing.reviews) { %>
+      <div class="card col-5 ms-3 mb-3 mt-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= review.author.username %></h5>
+          <p
+            class="starability-result card-text"
+            data-rating="<%= review.rating %>"
+          ></p>
+          <p class="card-text"><%= review.comment %></p>
+        </div>
+        <br />
+        <form
+          class="mb-3"
+          method="POST"
+          action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+        >
+          <button class="btn btn-sm btn-dark">Delete</button>
+        </form>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+  </div>
+  <div class="col-8 offset-2 mb-5">
+    <hr><br>
+    <h4>Where you'll be</h4>
+    <div class="destination">
+      <p><%= listing.location %>, <%= listing.country %></p>
+    </div>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="/js/map.js"></script>
