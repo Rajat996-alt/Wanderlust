@@ -1,15 +1,18 @@
+/* Global Layout */
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
   flex: 1;
 }
 
-/* navbar */
+/* Navbar */
 .navbar {
   height: 5rem;
   background-color: white;
@@ -24,7 +27,47 @@ body {
   color: #222222 !important;
 }
 
-/* filters */
+/* Fix collapsing issues */
+.navbar-collapse {
+  transition: all 0.3s ease;
+  z-index: 1000;
+  background-color: white;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    padding: 1rem;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+.search-btn {
+  background-color: #fe424d;
+  color: #fff;
+  border-radius: 25px;
+  padding: 0 1rem 0 1rem;
+}
+
+.search-btn:hover {
+  background-color: #fe424d;
+  color: #fff;
+}
+
+.search-btn i {
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.search-inp {
+  border-radius: 25px;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+/* Filters */
 #filters {
   display: flex;
   flex-wrap: nowrap;
@@ -42,7 +85,6 @@ body {
   color: #555;
 }
 
-
 .filter:hover {
   opacity: 1;
   cursor: pointer;
@@ -56,6 +98,7 @@ body {
   color: black;
 }
 
+/* Tax Toggle */
 .tax-info {
   display: none;
 }
@@ -70,15 +113,20 @@ body {
   align-items: center;
 }
 
-/* tax toggler */
-@media (max-width: 576px) {
-  .form-switch {
-    justify-content: center !important;
+@media (max-width: 768px) {
+  .tax-toggle {
+    justify-content: center;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+  }
+
+  .form-check-label {
+    font-size: 0.9rem;
+    text-align: center;
   }
 }
 
-
-/* footer */
+/* Footer */
 .footer {
   background-color: #f7f7f7;
   padding: 2rem 3rem;
@@ -160,9 +208,7 @@ hr {
   color: #555;
 }
 
-
-
-/* cards */
+/* Listing Cards */
 .listing-card {
   border: none;
   margin-bottom: 2rem;
@@ -195,7 +241,7 @@ hr {
   display: block;
 }
 
-/* card effect */
+/* Card hover effect */
 .card-img-overlay {
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -206,7 +252,7 @@ hr {
   background-color: white;
 }
 
-/* mobile responsiveness */
+/* Responsive Cards */
 @media (max-width: 576px) {
   .card-img-top {
     height: 12rem;
@@ -214,36 +260,35 @@ hr {
 
   .card-body {
     font-size: 0.85rem;
+    padding: 0.5rem;
   }
 }
 
-
-/* new page */
-.add-btn {
+/* New/Edit Page */
+.add-btn,
+.edit-btn {
   background-color: #fe424d !important;
   border: none !important;
 }
 
-/* edit page */
 .preview-image {
   max-width: 250px;
   max-height: 160px;
   object-fit: cover;
 }
 
-
-.edit-btn {
-  background-color: #fe424d !important;
-  border: none !important;
-}
-
-/* show page */
+/* Show Page Layout */
 .show-img {
-  height: 45vh;
+  width: 100%;
+  max-height: 45vh;
+  object-fit: cover;
+  border-radius: 1rem;
 }
 
 .btns {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .show-card {
@@ -251,7 +296,19 @@ hr {
   padding-right: 0;
 }
 
-/* amenities */
+/* Responsive show page layout */
+@media (max-width: 768px) {
+  .btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .show-img {
+    max-height: 40vh;
+  }
+}
+
+/* Amenities Section */
 .amenities-section {
   margin-top: 2rem;
 }
@@ -281,7 +338,7 @@ hr {
   color: #555;
 }
 
-/* review summary */
+/* Review Summary */
 .review-summary {
   margin-top: 3rem;
   border-top: 1px solid #ddd;
@@ -352,13 +409,17 @@ hr {
   margin: 5px 0;
 }
 
-
-/* map */
+/* Map Styling */
 #map {
-  width: 860px;
+  width: 100%;
   height: 430px;
   border-radius: 8px;
   margin-top: 20px;
   background-color: #aee2ff;
-  /* fallback color while map loads */
+}
+
+@media (max-width: 768px) {
+  #map {
+    height: 300px;
+  }
 }
