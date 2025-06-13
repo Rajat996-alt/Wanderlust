@@ -1,4 +1,40 @@
-<% layout("/layouts/boilerplate") %>
+<style>
+  .search-btn {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+
+  .search-btn:hover {
+    background-color: #fe424d;
+    color: #fff;
+  }
+
+  .search-btn i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    form[role="search"] {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 1rem;
+    }
+
+    form[role="search"] input,
+    form[role="search"] button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>
 
 <nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
@@ -40,7 +76,7 @@
           aria-label="Search"
         />
         <button class="btn search-btn" type="submit">
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-magnifying-glass" style="display: inline"></i>
           Search
         </button>
       </form>
