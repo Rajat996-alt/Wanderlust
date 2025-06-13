@@ -86,12 +86,12 @@ body {
   border: 1px solid black;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  margin-left: 2.4rem;
+  margin-left: 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  max-width: 300px;
+  max-width: 400px;
 }
 
 /* Optional: Make it look cleaner on mobile */
