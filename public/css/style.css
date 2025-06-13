@@ -60,7 +60,7 @@ body {
 .filter {
   text-align: center;
   flex: 0 0 auto;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
 }
 
@@ -70,7 +70,7 @@ body {
 }
 
 .filter p {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .filter div a {
@@ -86,12 +86,12 @@ body {
   border: 1px solid black;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
-  margin-left: 6rem;
+  margin-left: 7rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  max-width: 400px;
+  gap: 0.6rem;
+  max-width: 300px;
 }
 
 /* Optional: Make it look cleaner on mobile */
